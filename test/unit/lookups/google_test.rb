@@ -81,4 +81,13 @@ class GoogleTest < GeocoderTestCase
     assert url.include?(formatted), "Expected #{formatted} to be included in #{url}"
   end
 
+  def test_google_query_url_contains_language
+    lookup = Geocoder::Lookup::Google.new
+    url = lookup.query_url(Geocoder::Query.new(
+      "Some Intersection",
+      :language => "ru"
+    ))
+    assert_match(/language=ru/, url)
+  end
+
 end

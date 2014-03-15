@@ -55,6 +55,9 @@ module Geocoder::Lookup
       unless (components = query.options[:components]).nil?
         params[:components] = components.is_a?(Array) ? components.join("|") : components
       end
+      unless (language = query.options[:language]).nil?
+        params[:language] = language
+      end
       params
     end
 
